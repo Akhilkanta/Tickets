@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ticket Booking System</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <video autoplay muted loop class="background-video">
+        <source src= "C:\Users\kanta\Downloads\THIS IS 4K MARVEL (Ultra HD) - Senpai (1080p60, h264, youtube) (1).mp4"type="video/mp4"> 
+        Your browser does not support the video tag.
+    </video>
+
+    <div class="black-overlay"></div> <!-- Black overlay to darken the video -->
+
+    <div class="container">
+        <h1>🎬 Ticket Booking System 🎟️</h1>
+        <img src="C:\Users\kanta\Downloads\movie poster.jpg" alt="Cinema" class="cinema-image">
+
+        <div class="form-group">
+            <label for="customerId">Customer ID:</label>
+            <input type="number" id="customerId" placeholder="Enter Customer ID">
+        </div>
+        <div class="form-group">
+            <button onclick="enqueue()">Enqueue Customer</button>
+        </div>
+
+        <div class="form-group">
+            <label for="tickets">Tickets to Book:</label>
+            <input type="number" id="tickets" placeholder="Enter Number of Tickets">
+        </div>
+        <div class="form-group">
+            <button onclick="bookTickets()">Book Tickets</button>
+            <button onclick="undoBooking()">Undo Last Booking</button>
+        </div>
+
+        <h3>Queue:</h3>
+        <ul id="queueList"></ul>
+        <h3>Available Tickets: <span id="availableTickets">10</span></h3>
+        <img src="images/ticket.jpg" alt="Ticket" class="ticket-image">
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
