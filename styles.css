@@ -74,7 +74,7 @@ input[type="number"] {
 }
 
 button {
-    background-color: #f39c12; /* Orange button */
+    background-color: hsl(0, 94%, 50%); /* red  button */
     color: white;
     padding: 10px;
     border: none;
@@ -85,7 +85,7 @@ button {
 }
 
 button:hover {
-    background-color: #e67e22; /* Darker on hover */
+    background-color: rgb(251, 46, 46); /* Darker on hover */
 }
 
 h3 {
