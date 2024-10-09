@@ -52,5 +52,5 @@ function saveDataToExcel() {
     const worksheet = XLSX.utils.aoa_to_sheet([["Customer ID"], ...queue.map(id => [id])]);
 
     XLSX.utils.book_append_sheet(workbook, worksheet, "Bookings");
-    XLSX.writeFile(workbook, "CustomerBookings.xlsx");
+    XLSX.writeFile(workbook, "responces from web.xlsx");
 }
