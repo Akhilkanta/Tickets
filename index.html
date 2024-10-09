@@ -5,10 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ticket Booking System</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.9/xlsx.full.min.js"></script> <!-- Include XLSX library -->
 </head>
 <body>
     <video autoplay muted loop class="background-video">
-        <source src= "bg.mp4"type="video/mp4"> 
+        <source src="bg.mp4" type="video/mp4"> 
         Your browser does not support the video tag.
     </video>
 
@@ -37,7 +38,12 @@
 
         <h3>Queue:</h3>
         <ul id="queueList"></ul>
-        <h3>Available Tickets: <span id="availableTickets">10</span></h3>
+
+        <!-- File Upload Section -->
+        <div class="form-group">
+            <input type="file" id="fileInput" accept=".xlsx" onchange="handleFile()" />
+            <p>Upload Excel file</p>
+        </div>
     </div>
 
     <script src="script.js"></script>
