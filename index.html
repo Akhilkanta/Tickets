@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ticket Booking System</title>
     <link rel="stylesheet" href="styles.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.9/xlsx.full.min.js"></script> <!-- Include XLSX library -->
 </head>
 <body>
     <video autoplay muted loop class="background-video">
@@ -36,14 +35,14 @@
             <button onclick="undoBooking()">Undo Last Booking</button>
         </div>
 
+        <div class="form-group">
+            <label for="apiUrl">Backend API URL:</label>
+            <input type="text" id="apiUrl" placeholder="Enter API URL to save data">
+            <button onclick="saveDataToBackend()">Save Data</button>
+        </div>
+
         <h3>Queue:</h3>
         <ul id="queueList"></ul>
-
-        <!-- File Upload Section -->
-        <div class="form-group">
-            <input type="file" id="fileInput" accept=".xlsx" onchange="handleFile()" />
-            <p>Upload Excel file</p>
-        </div>
     </div>
 
     <script src="script.js"></script>
