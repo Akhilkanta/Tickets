@@ -1,6 +1,3 @@
-// Initial available tickets
-let availableTickets = 10;
-
 // Queue array to manage customer IDs
 const queue = [];
 
@@ -19,12 +16,10 @@ function enqueue() {
 // Function to book tickets
 function bookTickets() {
     const ticketsToBook = parseInt(document.getElementById('tickets').value);
-    if (ticketsToBook > 0 && ticketsToBook <= availableTickets) {
-        availableTickets -= ticketsToBook;
-        document.getElementById('availableTickets').textContent = availableTickets;
+    if (ticketsToBook > 0) {
         alert(`Successfully booked ${ticketsToBook} tickets!`);
     } else {
-        alert('Invalid number of tickets or insufficient available tickets.');
+        alert('Invalid number of tickets.');
     }
     document.getElementById('tickets').value = ''; // Clear input field
 }
@@ -54,24 +49,17 @@ function updateQueueDisplay() {
 // Function to save data to local storage
 function saveToLocalStorage() {
     localStorage.setItem('queue', JSON.stringify(queue));
-    localStorage.setItem('availableTickets', availableTickets);
     alert('Data saved to Local Storage!');
 }
 
 // Function to load data from local storage
 function loadFromLocalStorage() {
     const storedQueue = JSON.parse(localStorage.getItem('queue'));
-    const storedTickets = localStorage.getItem('availableTickets');
 
     if (storedQueue) {
         queue.length = 0; // Clear the existing queue
         queue.push(...storedQueue); // Load stored queue
         updateQueueDisplay();
-    }
-
-    if (storedTickets) {
-        availableTickets = parseInt(storedTickets);
-        document.getElementById('availableTickets').textContent = availableTickets;
     }
     alert('Data loaded from Local Storage!');
 }
@@ -104,9 +92,9 @@ function handleFile() {
             const worksheet = workbook.Sheets[firstSheetName];
             const jsonData = XLSX.utils.sheet_to_json(worksheet);
 
-            // Display loaded data in the console or handle as needed
+            // Process the JSON data loaded from Excel
             console.log(jsonData);
-            alert('Data loaded from Excel file!');
+            alert('Data loaded from Excel file! Check console for output.');
         };
         reader.readAsArrayBuffer(file);
     } else {
