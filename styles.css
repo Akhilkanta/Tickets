@@ -77,6 +77,11 @@ input[type="number"] {
     font-size: 1em;
 }
 
+/* Center the buttons */
+.buttons-group {
+    text-align: center; /* Center align buttons */
+}
+
 button {
     background-color: hsl(0, 94%, 50%); /* Red button */
     color: white;
