@@ -5,6 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ticket Booking System</title>
     <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Hide the number input arrows (spinners) */
+        input[type=number]::-webkit-outer-spin-button,
+        input[type=number]::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        input[type=number] {
+            -moz-appearance: textfield; /* Hides the spinner in Firefox */
+        }
+    </style>
 </head>
 <body>
     <video autoplay muted loop class="background-video">
