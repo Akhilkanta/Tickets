@@ -27,86 +27,112 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* Darken the video with a black overlay */
+    background-color: rgba(0, 0, 0, 0.6); /* Darken the video with a stronger black overlay */
     z-index: 0;
 }
 
 .container {
     position: relative;
     width: 90%; /* Make it responsive */
-    max-width: 700px; /* Set a max width */
-    background-color: rgba(0, 0, 0, 0.7); /* Slightly transparent black background */
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    max-width: 600px; /* Reduce the max width for better mobile experience */
+    background-color: rgba(0, 0, 0, 0.8); /* More opaque background for better contrast */
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
     z-index: 1; /* Ensure the container is above the overlay */
     text-align: center; /* Center align the text */
 }
 
 h1 {
     margin: 0;
-    font-size: 1.8em;
+    font-size: 2em; /* Increase the heading size for better visibility */
+    letter-spacing: 1px; /* Add some spacing for a modern look */
 }
 
 .cinema-image,
 .ticket-image {
-    width: 80%;
-    max-width: 300px;
-    border-radius: 10px;
-    margin: 10px auto;
+    width: 90%; /* Make image more responsive */
+    max-width: 280px; /* Adjust the max width */
+    border-radius: 12px;
+    margin: 15px auto;
 }
 
 .form-group {
-    margin-bottom: 10px;
+    margin-bottom: 15px;
+    text-align: left; /* Left align labels for better UX */
 }
 
 label {
     display: block;
-    margin-bottom: 5px;
+    margin-bottom: 8px;
+    font-weight: bold; /* Emphasize labels */
 }
 
 input[type="number"] {
     width: 100%;
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    margin-bottom: 10px;
+    padding: 12px;
+    border: 1px solid #ccc; /* Add subtle border */
+    border-radius: 6px;
+    margin-bottom: 15px;
+    font-size: 1em;
 }
 
 button {
-    background-color: hsl(0, 94%, 50%); /* red  button */
+    background-color: hsl(0, 94%, 50%); /* Red button */
     color: white;
-    padding: 10px;
+    padding: 12px;
     border: none;
-    border-radius: 5px;
+    border-radius: 6px;
     cursor: pointer;
-    width: 48%;
+    width: 48%; /* Ensure buttons don't break into the next line */
     margin: 5px;
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transitions */
 }
 
 button:hover {
-    background-color: rgb(251, 46, 46); /* Darker on hover */
+    background-color: rgb(251, 46, 46); /* Darker red on hover */
+    transform: translateY(-2px); /* Slight lift on hover */
+}
+
+button:active {
+    background-color: rgb(220, 20, 20); /* Even darker when pressed */
+    transform: translateY(0); /* Reset the button lift on press */
 }
 
 h3 {
-    margin-top: 15px;
-    font-size: 1.2em;
+    margin-top: 20px;
+    font-size: 1.4em;
 }
 
 #queueList {
     list-style-type: none;
     padding: 0;
     margin: 0;
-    font-size: 0.9em;
+    font-size: 1em;
 }
 
 #queueList li {
     background-color: #2980b9;
-    margin: 5px 0;
-    padding: 10px;
-    border-radius: 5px;
+    margin: 6px 0;
+    padding: 12px;
+    border-radius: 6px;
+    color: #fff;
 }
 
 #availableTickets {
     font-weight: bold;
+    color: #27ae60; /* Green to show availability */
+}
+
+/* Media queries for smaller screens */
+@media (max-width: 768px) {
+    .container {
+        width: 100%;
+        padding: 20px;
+    }
+
+    button {
+        width: 100%; /* Full-width buttons on small screens */
+        margin: 10px 0;
+    }
 }
