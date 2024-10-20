@@ -93,4 +93,54 @@ input[type="number"] {
     width: 48%;
     margin: 5px;
     transition: all 0.3s ease; /* Smooth transitions */
-    box-shadow: 
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3); /* Soft shadow */
+}
+
+.form-group.buttons-group button:hover {
+    background-color: rgb(174, 0, 255); /* Violet color on hover */
+    box-shadow: 0px 0px 40px rgba(174, 0, 255, 0.438); /* Violet glow effect */
+    transform: translateY(-2px); /* Slight lift effect */
+}
+
+.form-group.buttons-group button:active {
+    background-color: rgb(100, 0, 180); /* Darker violet when clicked */
+    transform: translateY(0); /* Reset button lift on press */
+}
+
+h3 {
+    margin-top: 20px;
+    font-size: 1.4em;
+}
+
+#queueList {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    font-size: 1em;
+}
+
+#queueList li {
+    background-color: #2980b9;
+    margin: 6px 0;
+    padding: 12px;
+    border-radius: 6px;
+    color: #fff;
+}
+
+#availableTickets {
+    font-weight: bold;
+    color: #27ae60; /* Green to show availability */
+}
+
+/* Media queries for smaller screens */
+@media (max-width: 768px) {
+    .container {
+        width: 100%;
+        padding: 20px;
+    }
+
+    button {
+        width: 100%; /* Full-width buttons on small screens */
+        margin: 10px 0;
+    }
+}
