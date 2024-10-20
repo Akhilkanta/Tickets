@@ -57,7 +57,8 @@
             letter-spacing: 1px; /* Add some spacing for a modern look */
         }
 
-        .cinema-image {
+        .cinema-image,
+        .ticket-image {
             width: 90%; /* Make image more responsive */
             max-width: 280px; /* Adjust the max width */
             border-radius: 12px;
@@ -134,5 +135,59 @@
             color: #fff;
         }
 
+        #availableTickets {
+            font-weight: bold;
+            color: #27ae60; /* Green to show availability */
+        }
+
         /* Media queries for smaller screens */
         @media (max-width: 768px) {
+            .container {
+                width: 100%;
+                padding: 20px;
+            }
+
+            button {
+                width: 100%; /* Full-width buttons on small screens */
+                margin: 10px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <video autoplay muted loop class="background-video">
+        <source src="bg.mp4" type="video/mp4"> 
+        Your browser does not support the video tag.
+    </video>
+
+    <div class="black-overlay"></div> <!-- Black overlay to darken the video -->
+
+    <div class="container">
+        <h1>🎬 Ticket Booking System 🎟️</h1>
+        <img src="movie poster.jpg" alt="Cinema" class="cinema-image">
+
+        <div class="form-group">
+            <label for="customerId">Customer ID:</label>
+            <input type="number" id="customerId" placeholder="Enter Customer ID">
+        </div>
+        <div class="form-group buttons-group">
+            <button onclick="enqueue()">Enqueue Customer</button>
+        </div>
+
+        <div class="form-group">
+            <label for="tickets">Tickets to Book:</label>
+            <input type="number" id="tickets" placeholder="Enter Number of Tickets">
+        </div>
+
+        <h3>Queue:</h3>
+        <ul id="queueList"></ul>
+
+        <!-- Book Tickets button centered -->
+        <div class="form-group buttons-group">
+            <button onclick="bookTickets()">Book Tickets</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
