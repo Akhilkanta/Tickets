@@ -1,40 +1,90 @@
-/* Styling the newly added Start button */
-.start-button {
+/* Ensure the body and its contents fill the entire viewport height */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    color: #ffffff;
+    height: 100vh;
     display: flex;
-    align-items: center;
     justify-content: center;
-    padding: 12px 20px;
-    background-color: rgb(46, 46, 46); /* Dark background for consistency */
-    color: white;
-    border: none;
-    border-radius: 50px;
-    cursor: pointer;
+    align-items: center;
+    position: relative;
+    overflow: hidden; /* Prevent any scrolling */
+}
+
+.background-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1; /* Keep the video in the background */
+}
+
+.black-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6); /* Darken the video with a stronger black overlay */
+    z-index: 0;
+}
+
+.container {
+    position: relative;
+    width: 90%; /* Make it responsive */
+    max-width: 600px; /* Reduce the max width for better mobile experience */
+    background-color: rgba(0, 0, 0, 0.8); /* More opaque background for better contrast */
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
+    z-index: 1; /* Ensure the container is above the overlay */
+    text-align: center; /* Center align the text */
+}
+
+h1 {
+    margin: 0;
+    font-size: 2em; /* Increase the heading size for better visibility */
+    letter-spacing: 1px; /* Add some spacing for a modern look */
+}
+
+.cinema-image,
+.ticket-image {
+    width: 90%; /* Make image more responsive */
+    max-width: 280px; /* Adjust the max width */
+    border-radius: 12px;
+    margin: 15px auto;
+}
+
+.form-group {
+    margin-bottom: 15px;
+    text-align: left; /* Left align labels for better UX */
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold; /* Emphasize labels */
+}
+
+input[type="number"] {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc; /* Add subtle border */
+    border-radius: 6px;
+    margin-bottom: 15px;
     font-size: 1em;
-    font-weight: 600;
-    transition: all 0.3s ease;
-    gap: 10px;
-    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5); /* Soft shadow for depth */
 }
 
-.start-button svg path {
-    fill: white; /* Ensure the icon stays white */
+/* Center the buttons */
+.buttons-group {
+    text-align: center; /* Center align buttons */
 }
 
-.start-button:hover {
-    background-color: rgb(174, 0, 255); /* Matching the switch style when active */
-    box-shadow: 0px 0px 40px rgba(174, 0, 255, 0.438); /* Add glow effect on hover */
-    transform: scale(1.05); /* Slight scaling effect on hover */
-}
-
-.start-button:active {
-    background-color: rgb(100, 0, 180); /* Darker shade when clicked */
-    box-shadow: 0px 0px 20px rgba(100, 0, 180, 0.438); /* Softer glow */
-    transform: scale(1); /* Reset scaling */
-}
-
-/* Styling for Enqueue and Book Tickets buttons */
+/* Styling for Enqueue and Book Tickets buttons with violet glow */
 .form-group.buttons-group button {
-    background-color: hsl(0, 94%, 50%); /* Red button color */
+    background-color: rgb(46, 46, 46); /* Dark background for consistency */
     color: white;
     padding: 12px;
     border: none;
@@ -47,12 +97,43 @@
 }
 
 .form-group.buttons-group button:hover {
-    background-color: rgb(251, 46, 46); /* Darker red on hover */
+    background-color: rgb(174, 0, 255); /* Violet color on hover */
+    box-shadow: 0px 0px 40px rgba(174, 0, 255, 0.438); /* Violet glow effect */
     transform: translateY(-2px); /* Slight lift effect */
-    box-shadow: 0px 0px 40px rgba(251, 46, 46, 0.438); /* Glow effect */
 }
 
 .form-group.buttons-group button:active {
-    background-color: rgb(220, 20, 20); /* Even darker when clicked */
+    background-color: rgb(100, 0, 180); /* Darker violet when clicked */
     transform: translateY(0); /* Reset button lift on press */
 }
+
+h3 {
+    margin-top: 20px;
+    font-size: 1.4em;
+}
+
+#queueList {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    font-size: 1em;
+}
+
+#queueList li {
+    background-color: #2980b9;
+    margin: 6px 0;
+    padding: 12px;
+    border-radius: 6px;
+    color: #fff;
+}
+
+#availableTickets {
+    font-weight: bold;
+    color: #27ae60; /* Green to show availability */
+}
+
+/* Media queries for smaller screens */
+@media (max-width: 768px) {
+    .container {
+        width: 100%;
+        padding:
