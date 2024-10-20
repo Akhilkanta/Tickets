@@ -6,53 +6,157 @@
     <title>Ticket Booking System</title>
     <link rel="stylesheet" href="styles.css">
     <style>
-        .start-button {
+        /* Ensure the body and its contents fill the entire viewport height */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            color: #ffffff;
+            height: 100vh;
             display: flex;
-            align-items: center;
             justify-content: center;
-            padding: 10px 20px;
-            background-color: #007bff;
-            color: white;
-            border: none;
-            border-radius: 25px;
-            cursor: pointer;
-            font-size: 16px;
+            align-items: center;
+            position: relative;
+            overflow: hidden; /* Prevent any scrolling */
         }
 
-        .start-button svg {
-            margin-left: 10px;
-            width: 20px;
-            height: 20px;
-            fill: white;
+        .background-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1; /* Keep the video in the background */
         }
 
-        .start-button:hover {
-            background-color: #0056b3;
+        .black-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6); /* Darken the video with a stronger black overlay */
+            z-index: 0;
+        }
+
+        .container {
+            position: relative;
+            width: 90%; /* Make it responsive */
+            max-width: 600px; /* Reduce the max width for better mobile experience */
+            background-color: rgba(0, 0, 0, 0.8); /* More opaque background for better contrast */
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
+            z-index: 1; /* Ensure the container is above the overlay */
+            text-align: center; /* Center align the text */
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 2em; /* Increase the heading size for better visibility */
+            letter-spacing: 1px; /* Add some spacing for a modern look */
+        }
+
+        .cinema-image,
+        .ticket-image {
+            width: 90%; /* Make image more responsive */
+            max-width: 280px; /* Adjust the max width */
+            border-radius: 12px;
+            margin: 15px auto;
         }
 
         .form-group {
-            margin-top: 20px;
+            margin-bottom: 15px;
+            text-align: left; /* Left align labels for better UX */
         }
 
-        /* Additional button styling for Enqueue and Book Tickets */
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold; /* Emphasize labels */
+        }
+
+        input[type="number"] {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc; /* Add subtle border */
+            border-radius: 6px;
+            margin-bottom: 15px;
+            font-size: 1em;
+        }
+
+        /* Center the buttons */
+        .buttons-group {
+            text-align: center; /* Center align buttons */
+        }
+
+        /* Styling for Enqueue and Book Tickets buttons with violet glow */
         .form-group.buttons-group button {
-            margin-top: 10px;
-            padding: 10px 20px;
-            background-color: #28a745;
+            background-color: rgb(46, 46, 46); /* Dark background for consistency */
             color: white;
+            padding: 12px;
             border: none;
-            border-radius: 5px;
+            border-radius: 50px;
             cursor: pointer;
+            width: 48%;
+            margin: 5px;
+            transition: all 0.3s ease; /* Smooth transitions */
+            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3); /* Soft shadow */
         }
 
         .form-group.buttons-group button:hover {
-            background-color: #218838;
+            background-color: rgb(174, 0, 255); /* Violet color on hover */
+            box-shadow: 0px 0px 40px rgba(174, 0, 255, 0.438); /* Violet glow effect */
+            transform: translateY(-2px); /* Slight lift effect */
+        }
+
+        .form-group.buttons-group button:active {
+            background-color: rgb(100, 0, 180); /* Darker violet when clicked */
+            transform: translateY(0); /* Reset button lift on press */
+        }
+
+        h3 {
+            margin-top: 20px;
+            font-size: 1.4em;
+        }
+
+        #queueList {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            font-size: 1em;
+        }
+
+        #queueList li {
+            background-color: #2980b9;
+            margin: 6px 0;
+            padding: 12px;
+            border-radius: 6px;
+            color: #fff;
+        }
+
+        #availableTickets {
+            font-weight: bold;
+            color: #27ae60; /* Green to show availability */
+        }
+
+        /* Media queries for smaller screens */
+        @media (max-width: 768px) {
+            .container {
+                width: 100%;
+                padding: 20px;
+            }
+
+            button {
+                width: 100%; /* Full-width buttons on small screens */
+                margin: 10px 0;
+            }
         }
     </style>
 </head>
 <body>
     <video autoplay muted loop class="background-video">
-        <source src="bg.mp4" type="video/mp4">
+        <source src="bg.mp4" type="video/mp4"> 
         Your browser does not support the video tag.
     </video>
 
@@ -62,21 +166,10 @@
         <h1>🎬 Ticket Booking System 🎟️</h1>
         <img src="movie poster.jpg" alt="Cinema" class="cinema-image">
 
-        <!-- New Start Button -->
-        <div class="form-group buttons-group">
-            <button class="start-button">
-                Start
-                <svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M288 32c0-17.7-14.3-32-32-32s-32 14.3-32 32V256c0 17.7 14.3 32 32 32s32-14.3 32-32V32zM143.5 120.6c13.6-11.3 15.4-31.5 4.1-45.1s-31.5-15.4-45.1-4.1C49.7 115.4 16 181.8 16 256c0 132.5 107.5 240 240 240s240-107.5 240-240c0-74.2-33.8-140.6-86.6-184.6c-13.6-11.3-33.8-9.4-45.1 4.1s-9.4 33.8 4.1 45.1c38.9 32.3 63.5 81 63.5 135.4c0 97.2-78.8 176-176 176s-176-78.8-176-176c0-54.4 24.7-103.1 63.5-135.4z"></path>
-                </svg>
-            </button>
-        </div>
-
         <div class="form-group">
             <label for="customerId">Customer ID:</label>
             <input type="number" id="customerId" placeholder="Enter Customer ID">
         </div>
-        
         <div class="form-group buttons-group">
             <button onclick="enqueue()">Enqueue Customer</button>
         </div>
